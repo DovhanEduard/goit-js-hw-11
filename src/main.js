@@ -20,14 +20,10 @@ form.addEventListener('submit', event => {
 
   const searchValue = event.target.elements.imgType.value.trim();
 
-  if (searchValue === '') {
-    return alert('Please fill the field');
-  }
-
   showLoader();
   getImages(searchValue)
     .then(data => {
-      if (data.hits.length === 0) {
+      if (data.hits.length === 0 || searchValue === '') {
         throw new Error();
       }
 
